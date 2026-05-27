@@ -1,0 +1,25 @@
+# Curated list of companies to ingest.
+# Add Greenhouse board slugs (the {slug} in https://boards.greenhouse.io/{slug}).
+# Pick companies that hire in India. Verify a slug by visiting
+#   https://boards-api.greenhouse.io/v1/boards/{slug}/jobs
+# before adding.
+greenhouse:
+  - slug: stripe
+    name: Stripe
+    hq_country: US
+  - slug: airbnb
+    name: Airbnb
+    hq_country: US
+  - slug: gitlab
+    name: GitLab
+    hq_country: US
+  - slug: instacart
+    name: Instacart
+    hq_country: US
+  - slug: doordash
+    name: DoorDash
+    hq_country: US
+  # TODO: add Indian companies on Greenhouse (Razorpay, CRED, etc. — verify slugs).
+
+lever: []  # phase 2
+ashby: []  # phase 2
