@@ -1,25 +1,95 @@
-# Curated list of companies to ingest.
-# Add Greenhouse board slugs (the {slug} in https://boards.greenhouse.io/{slug}).
-# Pick companies that hire in India. Verify a slug by visiting
+# Curated list of Greenhouse company slugs that hire in India.
+# Verify any new slug by visiting:
 #   https://boards-api.greenhouse.io/v1/boards/{slug}/jobs
-# before adding.
+# (should return JSON with a "jobs" array).
+#
+# Categories below are advisory only; the ingester pulls everything
+# and the normalizer filters to Indian cities.
+
 greenhouse:
+  # ---- India-headquartered companies ----
+  - slug: razorpaysoftwareprivatelimited
+    name: Razorpay
+    hq_country: India
+    sectors: [fintech, payments]
+  - slug: postman
+    name: Postman
+    hq_country: India
+    sectors: [devtools, api]
+  - slug: groww
+    name: Groww
+    hq_country: India
+    sectors: [fintech, investing]
+  - slug: hackerrank
+    name: HackerRank
+    hq_country: India
+    sectors: [hrtech, devtools]
+  - slug: cloudsek
+    name: CloudSEK
+    hq_country: India
+    sectors: [security]
+  - slug: tekion
+    name: Tekion
+    hq_country: India
+    sectors: [autotech, saas, ml]
+
+  # ---- Globals with major India engineering presence ----
+  - slug: cloudflare
+    name: Cloudflare
+    hq_country: US
+    sectors: [infra, security]
+  - slug: rubrik
+    name: Rubrik
+    hq_country: US
+    sectors: [data, security]
+  - slug: twilio
+    name: Twilio
+    hq_country: US
+    sectors: [communications, api]
+  - slug: zscaler
+    name: Zscaler
+    hq_country: US
+    sectors: [security]
+  - slug: vonage
+    name: Vonage
+    hq_country: US
+    sectors: [communications]
+  - slug: gleanwork
+    name: Glean
+    hq_country: US
+    sectors: [ai, search]
+  - slug: atlassian
+    name: Atlassian
+    hq_country: AU
+    sectors: [saas, devtools]
   - slug: stripe
     name: Stripe
     hq_country: US
+    sectors: [fintech, payments]
   - slug: airbnb
     name: Airbnb
     hq_country: US
-  - slug: gitlab
-    name: GitLab
+    sectors: [marketplace, travel]
+  - slug: pinterest
+    name: Pinterest
     hq_country: US
-  - slug: instacart
-    name: Instacart
+    sectors: [social, ml]
+  - slug: dropbox
+    name: Dropbox
     hq_country: US
-  - slug: doordash
+    sectors: [saas, storage]
+  - slug: discord
+    name: Discord
+    hq_country: US
+    sectors: [social, communications]
+  - slug: anthropic
+    name: Anthropic
+    hq_country: US
+    sectors: [ai, research]
+  - slug: doordashusa
     name: DoorDash
     hq_country: US
-  # TODO: add Indian companies on Greenhouse (Razorpay, CRED, etc. — verify slugs).
+    sectors: [marketplace, logistics]
 
 lever: []  # phase 2
 ashby: []  # phase 2
