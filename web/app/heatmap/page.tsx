@@ -1,4 +1,5 @@
 import { api, type CityHeat } from "@/lib/api";
+import IndiaHeatmap from "@/components/india-heatmap";
 
 export const dynamic = "force-dynamic";
 
@@ -11,15 +12,13 @@ export default async function HeatmapPage() {
     error = e instanceof Error ? e.message : "Failed to load heatmap";
   }
 
-  const max = Math.max(1, ...cities.map((c) => c.job_count));
-
   return (
     <div className="space-y-6">
       <header>
         <h1 className="text-2xl font-bold">City Heatmap</h1>
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          Active job count per city. Map visualization coming next; this is the
-          tabular precursor.
+          Active jobs per Indian metro. Bubble size scales with job count;
+          hover for top skills.
         </p>
       </header>
 
@@ -31,43 +30,35 @@ export default async function HeatmapPage() {
 
       {!error && cities.length === 0 && (
         <p className="text-sm text-zinc-500">
-          No data yet. Run the ingestion: <code>python -m app.ingestion.run --source greenhouse --rollup</code>
+          No data yet. Run:{" "}
+          <code>python -m app.ingestion.run --source greenhouse --rollup</code>
         </p>
       )}
 
-      <ul className="space-y-2">
-        {cities.map((c) => (
-          <li
-            key={c.city}
-            className="rounded-md border border-zinc-200 p-4 dark:border-zinc-800"
-          >
-            <div className="flex items-baseline justify-between">
-              <h2 className="font-semibold">{c.city}</h2>
-              <span className="text-sm tabular-nums text-zinc-500">
-                {c.job_count} jobs
-              </span>
-            </div>
-            <div className="mt-2 h-2 w-full overflow-hidden rounded bg-zinc-100 dark:bg-zinc-900">
-              <div
-                className="h-full bg-emerald-500"
-                style={{ width: `${(c.job_count / max) * 100}%` }}
-              />
-            </div>
-            {c.top_skills.length > 0 && (
-              <div className="mt-3 flex flex-wrap gap-2">
-                {c.top_skills.map((s) => (
-                  <span
-                    key={s}
-                    className="rounded bg-zinc-100 px-2 py-0.5 text-xs dark:bg-zinc-800"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
-            )}
-          </li>
-        ))}
-      </ul>
+      <div className="rounded-lg border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-950">
+        <IndiaHeatmap cities={cities} />
+      </div>
+
+      {cities.length > 0 && (
+        <details className="rounded-md border border-zinc-200 dark:border-zinc-800">
+          <summary className="cursor-pointer p-3 text-sm font-medium">
+            Show as table
+          </summary>
+          <ul className="space-y-2 p-3 pt-0">
+            {cities.map((c) => (
+              <li
+                key={c.city}
+                className="flex items-baseline justify-between border-t border-zinc-100 py-2 dark:border-zinc-900"
+              >
+                <span className="font-medium">{c.city}</span>
+                <span className="text-sm tabular-nums text-zinc-500">
+                  {c.job_count}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
     </div>
   );
 }
