@@ -38,6 +38,8 @@ python -m app.ingestion.run --source greenhouse
 # 5. Frontend (separate terminal)
 cd web
 npm install
+curl -L https://raw.githubusercontent.com/deldersveld/topojson/master/countries/india/india-states.json \
+  -o public/maps/india-states.json   # see public/maps/README.md
 npm run dev
 ```
 
@@ -56,10 +58,10 @@ See `api/app/ingestion/companies.yml` to add Greenhouse company slugs.
 ## Roadmap
 
 - [x] Project scaffold
-- [ ] Greenhouse ingestion end-to-end
-- [ ] Skill extraction (rule-based → embeddings later)
-- [ ] City heatmap UI
-- [ ] Skill trends UI
+- [x] Greenhouse ingestion end-to-end
+- [x] Skill extraction (rule-based → embeddings later)
+- [x] City heatmap UI (India map with city bubbles)
+- [ ] Skill trends UI (sparklines)
 - [ ] Lever + Ashby ingestion
 - [ ] Daily cron / Celery beat
 - [ ] Deploy: Vercel + Railway + Neon

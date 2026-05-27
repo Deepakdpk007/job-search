@@ -1,0 +1,2 @@
+# Topojson is downloaded at setup time; see public/maps/README.md.
+public/maps/india-states.json
